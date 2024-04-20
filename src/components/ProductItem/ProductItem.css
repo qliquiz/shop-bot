@@ -12,6 +12,7 @@
 .img {
     grid-row-start: 1;
     grid-row-end: 2;
+    border-radius: 10px;
     width: 100%;
     background: lightgray;
 }
@@ -23,20 +24,21 @@
 }
 
 .description {
-    color: rgb(30, 30, 30);
+    color: rgb(35, 35, 35);
     grid-row-start: 3;
     grid-row-end: 4;
     font-size: 0.8em;
 }
 
 .price {
-    color: rgb(30, 30, 30);
+    color: rgb(35, 35, 35);
     grid-row-start: 4;
     grid-row-end: 5;
     font-size: 0.8em;
 }
 
 .price-number {
+    color: black;
     font-size: 1.1em;
 }
 
