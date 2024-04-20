@@ -1,8 +1,8 @@
 .product {
     display: flex;
     flex-direction: column;
-    border: 1px solid hsl(--tg-theme-button-color, 50%);
-    border-radius: 10%;
+    border: 1px solid var(--tg-theme-button-color);
+    border-radius: 10px;
     padding: 15px;
     width: 170px;
 }
@@ -12,16 +12,24 @@
     width: 100%;
     background: lightgray;
     height: 100px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     /* margin: 0 auto; */
     /* background: var(--tg-theme-button-color); */
 }
 
+.title {
+    margin-bottom: 5px;
+}
+
 .description {
     font-size: 0.8em;
-    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.5em;
 }
 
 .add-btn {
+    margin-top: 10px;
     width: 100%;
 }

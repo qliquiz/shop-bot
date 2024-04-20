@@ -3,7 +3,7 @@
     background: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     border: none;
-    border-radius: 25%;
+    border-radius: 20px;
     outline: none;
     cursor: pointer;
 }
