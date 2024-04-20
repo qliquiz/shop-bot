@@ -28,6 +28,7 @@
 
 .price {
     font-size: 0.8em;
+    margin-bottom: 10px;
 }
 
 .price-number {
@@ -35,6 +36,5 @@
 }
 
 .add-btn {
-    margin-top: 10px;
     width: 100%;
 }
