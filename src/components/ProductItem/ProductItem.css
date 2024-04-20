@@ -6,7 +6,7 @@
     box-shadow: 0px 0px 5px var(--tg-theme-button-color);
     padding: 15px;
     width: 170px;
-    grid-template-rows: 100px 50px 45px 40px 45px;
+    grid-template-rows: 100px 30px 25px 20px 25px;
     grid-gap: 10px;
 }
 
