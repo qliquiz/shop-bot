@@ -1,4 +1,5 @@
 .product {
+    position: relative;
     display: flex;
     flex-direction: column;
     /* border: 1px solid var(--tg-theme-button-color); */
@@ -10,25 +11,33 @@
 
 
 .img {
+    position: absolute;
     width: 100%;
     background: lightgray;
     height: 100px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    top:10px
     /* margin: 0 auto; */
     /* background: var(--tg-theme-button-color); */
 }
 
 .title {
-    margin-bottom: 5px;
+    position: absolute;
+    top: 115px;
+    /* margin-bottom: 5px; */
 }
 
 .description {
+    position: absolute;
+    top: 120px;
     font-size: 0.8em;
 }
 
 .price {
     font-size: 0.8em;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    position: absolute;
+    top: 140px;
 }
 
 .price-number {
@@ -36,5 +45,7 @@
 }
 
 .add-btn {
+    position: absolute;
+    bottom: 5px;
     width: 100%;
 }
