@@ -24,21 +24,18 @@
 }
 
 .description {
-    color: rgb(35, 35, 35);
     grid-row-start: 3;
     grid-row-end: 4;
     font-size: 0.8em;
 }
 
 .price {
-    color: rgb(35, 35, 35);
     grid-row-start: 4;
     grid-row-end: 5;
     font-size: 0.8em;
 }
 
 .price-number {
-    color: black;
     font-size: 1.1em;
 }
 
