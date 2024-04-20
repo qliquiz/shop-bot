@@ -10,6 +10,6 @@
 }
 
 .username {
-    /* padding: auto; */
+    padding: 5px auto;
     color: var(--tg-theme-text-color);
 }
