@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('date_base_pluto.bd');
+const db = new sqlite3.Database('../date_base_pluto.bd');
 
 let products = [];
 
