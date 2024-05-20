@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('../../../date_base_pluto.bd'); // Подключение к базе данных
+const db = new sqlite3.Database('date_base_pluto.bd'); // Подключение к базе данных
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -48,14 +48,14 @@ const ProductList = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [addedItems])
+    }, [addedItems]);
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
+        tg.onEvent('mainButtonClicked', onSendData);
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
+            tg.offEvent('mainButtonClicked', onSendData);
         }
-    }, [onSendData])
+    }, [onSendData]);
 
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -67,7 +67,7 @@ const ProductList = () => {
             newItems = [...addedItems, product];
         }
 
-        setAddedItems(newItems)
+        setAddedItems(newItems);
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
