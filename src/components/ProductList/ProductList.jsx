@@ -27,6 +27,7 @@ const ProductList = () => {
                 // Обработка ошибки
             } else {
                 setProducts(rows);
+                console.log('\n\n\n\n\n\n\n' + products + '\n\n\n\n\n\n\n');
             }
         });
 
