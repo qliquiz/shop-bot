@@ -7,6 +7,12 @@ import {useCallback, useEffect} from "react";
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('../../../date_base_pluto.bd'); // Подключение к базе данных
 
+const products = []
+
+db.all('SELECT * FROM goods', (err, rows) => { if (!err) products = rows; });
+
+db.close();
+
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.cost;
@@ -16,19 +22,6 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
-
-    // Загрузка продуктов из базы данных
-    // const [products, setProducts] = useState([]);
-    const products = []
-
-    db.all('SELECT * FROM goods', (err, rows) => {
-        if (!err) {
-            products = rows;
-            console.log('\n\n\n\n\n\n\n' + products + '\n\n\n\n\n\n\n');
-        }
-    });
-
-    db.close(); // Закрытие соединения с базой данных
 
     const onSendData = useCallback(() => {
         const data = {
