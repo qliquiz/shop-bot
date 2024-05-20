@@ -4,14 +4,7 @@ import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('date_base_pluto.bd');
-
-let products = [];
-
-db.all('SELECT * FROM goods', (err, rows) => { if (!err) products = rows; });
-
-db.close();
+let products = require('/Users/artemgorev/shop-bot-back/src/db.js');
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
