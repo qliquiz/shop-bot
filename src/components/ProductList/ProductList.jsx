@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('date_base_pluto.bd');
+const db = new sqlite3.Database('/Users/artemgorev/shop-bot/date_base_pluto.bd');
 
 const products = []
 
