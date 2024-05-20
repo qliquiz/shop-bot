@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 import sqlite3 from 'sqlite3';
 
-const db = new sqlite3.Database('./date_base_pluto.bd');
+const db = new sqlite3.Database('../../../date_base_pluto.bd');
 
 const [products, setData] = useState([]);
 const [error, setError] = useState(null);
