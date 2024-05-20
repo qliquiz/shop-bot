@@ -3,6 +3,7 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
+const path = require('path-browserify');
 // import products from '../../db.js';
 let products = require('../../db.js');
 

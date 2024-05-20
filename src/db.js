@@ -1,3 +1,4 @@
+const path = require('path-browserify');
 import sqlite3 from 'sqlite3';
 const db = new sqlite3.Database('date_base_pluto.bd');
 
