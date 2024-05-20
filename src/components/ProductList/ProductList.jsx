@@ -4,26 +4,36 @@ import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
-const products = [
-    {id: '1', title: 'Колонка JBL', price: 5000, description: 'Красная, bluetooth'},
-    {id: '2', title: 'Аудиосистема SONY', price: 12000, description: 'Чёрная, теплая'},
-    {id: '3', title: 'МиниКолонка JBL', price: 3000, description: 'Синяя, bluetooth'},
-    {id: '4', title: 'Subwoofer JBL', price: 20000, description: 'Чёрный, теплая'},
-    {id: '5', title: 'Наушники AirPods', price: 11000, description: 'Белые, bluetooth'},
-    {id: '6', title: 'Наушники AirPods Pro', price: 18000, description: 'Белые, bluetooth'},
-    {id: '7', title: 'Наушники Marshall', price: 15000, description: 'Чёрные, bluetooth'},
-    {id: '8', title: 'Наушники EarPods', price: 1000, description: 'Белые, проводные'},
-]
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('../../../date_base_pluto.bd'); // Подключение к базе данных
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.price
-    }, 0)
+    }, 0);
 }
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+
+    // Загрузка продуктов из базы данных
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        db.all('SELECT * FROM goods', (err, rows) => {
+            if (err) {
+                console.error(err);
+                // Обработка ошибки
+            } else {
+                setProducts(rows);
+            }
+        });
+
+        return () => {
+            db.close(); // Закрытие соединения с базой данных
+        };
+    }, []);
 
     const onSendData = useCallback(() => {
         const data = {

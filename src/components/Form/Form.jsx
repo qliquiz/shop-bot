@@ -5,7 +5,8 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
-    const [street, setStreet] = useState('');
+    const [postOffice, setPostOffice] = useState('');
+    const [friendName, setFriendName] = useState('');
     const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
@@ -13,11 +14,12 @@ const Form = () => {
         const data = {
             country,
             city,
-            street,
+            postOffice,
+            friendName,
             subject
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, city, street, subject])
+    }, [country, city, postOffice, friendName, subject])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -33,12 +35,12 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!street || !city || !country) {
+        if(!postOffice || !city || !country) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [country, postOffice])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
@@ -48,8 +50,12 @@ const Form = () => {
         setCity(e.target.value)
     }
 
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value)
+    const onChangePostOffice = (e) => {
+        setPostOffice(e.target.value)
+    }
+
+    const onChangeFriendName = (e) => {
+        setFriendName(e.target.value)
     }
 
     const onChangeSubject = (e) => {
@@ -62,23 +68,30 @@ const Form = () => {
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Страна'}
+                placeholder={'Страна*'}
                 value={country}
                 onChange={onChangeCountry}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Город'}
+                placeholder={'Город*'}
                 value={city}
                 onChange={onChangeCity}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Улица'}
-                value={street}
-                onChange={onChangeStreet}
+                placeholder={'Почтовое отделение*'}
+                value={postOffice}
+                onChange={onChangePostOffice}
+            />
+            <input
+                className={'input'}
+                type="text"
+                placeholder={'Телеграм-логин пригласившего друга'}
+                value={friendName}
+                onChange={onChangeFriendName}
             />
             <select value={subject} onChange={onChangeSubject} className={'select'}>
                 <option value={'physical'}>Физ. лицо</option>
