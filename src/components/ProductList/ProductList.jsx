@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import {useCallback, useEffect} from "react";
 import sqlite3 from 'sqlite3';
 
 const db = new sqlite3.Database('../../../date_base_pluto.bd');
