@@ -9,7 +9,7 @@ const db = new sqlite3.Database('date_base_pluto.bd'); // Подключение
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc += item.price
+        return acc += item.cost;
     }, 0);
 }
 
