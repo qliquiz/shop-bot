@@ -22,8 +22,7 @@ const ProductList = () => {
     const products = []
 
     db.all('SELECT * FROM goods', (err, rows) => {
-        if (err) onsole.error(err);
-        else {
+        if (!err) {
             products = rows;
             console.log('\n\n\n\n\n\n\n' + products + '\n\n\n\n\n\n\n');
         }
