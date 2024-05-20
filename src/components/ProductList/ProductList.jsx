@@ -1,11 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
-const path = require('path-browserify');
-// import products from '../../db.js';
-let products = require('../../db.js');
+import sqlite3 from 'sqlite3';
+
+const db = new sqlite3.Database('./date_base_pluto.bd');
+
+const [products, setData] = useState([]);
+const [error, setError] = useState(null);
+
+useEffect(() => {
+    db.all('SELECT * FROM goods', (err, rows) => {
+        if (err) {
+        setError(err);
+        } else {
+        setData(rows);
+        }
+    });
+
+    return () => {
+        db.close();
+    };
+}, []);
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {

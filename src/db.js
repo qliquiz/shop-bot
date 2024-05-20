@@ -1,4 +1,4 @@
-const path = require('path-browserify');
+/* const path = require('path-browserify');
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('../date_base_pluto.bd');
 
@@ -14,4 +14,4 @@ db.close((err) => {
     else console.log('\n' + 'Соединение с базой данных закрыто.' + '\n');
 });
 
-module.exports = products;
+module.exports = products; */
