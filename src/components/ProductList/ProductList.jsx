@@ -3,7 +3,8 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
-import products from '../../db.js';
+// import products from '../../db.js';
+let products = require('../../db.js');
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
