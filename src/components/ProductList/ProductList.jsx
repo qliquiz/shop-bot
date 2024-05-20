@@ -18,22 +18,18 @@ const ProductList = () => {
     const {tg, queryId} = useTelegram();
 
     // Загрузка продуктов из базы данных
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
+    const products = []
 
-    useEffect(() => {
-        db.all('SELECT * FROM goods', (err, rows) => {
-            if (err) {
-                console.error(err);
-            } else {
-                setProducts(rows);
-                console.log('\n\n\n\n\n\n\n' + products + '\n\n\n\n\n\n\n');
-            }
-        });
+    db.all('SELECT * FROM goods', (err, rows) => {
+        if (err) onsole.error(err);
+        else {
+            products = rows;
+            console.log('\n\n\n\n\n\n\n' + products + '\n\n\n\n\n\n\n');
+        }
+    });
 
-        return () => {
-            db.close(); // Закрытие соединения с базой данных
-        };
-    }, []);
+    db.close(); // Закрытие соединения с базой данных
 
     const onSendData = useCallback(() => {
         const data = {
