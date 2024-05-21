@@ -10,7 +10,7 @@
 
 
 .img {
-    background-image: url('./колонка1 (1).png');
+    /* background-image: url('./колонка1 (1).png'); */
     grid-row-start: 1;
     grid-row-end: 2;
     border-radius: 10px;
