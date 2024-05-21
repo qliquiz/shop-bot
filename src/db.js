@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./date_base_pluto.bd');
 
-export let products = [];
+let products = [];
 
 db.all('SELECT * FROM goods', (err, rows) => {
     if (!err) products = rows;
@@ -15,3 +15,4 @@ db.close((err) => {
 });
 
 // module.exports = products;
+export default products;
