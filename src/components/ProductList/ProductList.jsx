@@ -18,13 +18,13 @@ const ProductList = () => {
     const onSendData = useCallback(() => {
         const data = { message: 'Привет, сервер!' };
 
-            fetch('http://localhost:3000/web-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
+        fetch('http://localhost:3000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Ошибка сети');
