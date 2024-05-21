@@ -2,8 +2,11 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import sqlite3 from 'sqlite3';
 
+// let products = require('../../../db');
+import { products } from '../../../db';
+
+/* import sqlite3 from 'sqlite3';
 const db = new sqlite3.Database('../../../date_base_pluto.bd');
 
 const [products, setData] = useState([]);
@@ -21,7 +24,9 @@ useEffect(() => {
     return () => {
         db.close();
     };
-}, []);
+}, []); */
+
+
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
