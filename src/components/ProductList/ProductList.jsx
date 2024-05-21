@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import {products} from '../../dnfbjkxjzknvz';
+import {products} from '../../ccac.js';
 
 
 
