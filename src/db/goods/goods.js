@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database(dbPath);
 
 
-db.all('SELECT * FROM goods WHERE count > 0', (err, rows) => {
+db.all('SELECT * FROM items WHERE count > 0', (err, rows) => {
     if (err) console.log(err);
     else {
         console.log(rows);
