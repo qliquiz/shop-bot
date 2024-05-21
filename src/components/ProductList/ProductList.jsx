@@ -2,15 +2,10 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-const fs = require('fs');
+import { readFileSync } from 'fs';
 
-
-const data = fs.readFileSync('../../data.json', 'utf-8');
-
-// Преобразование строки в массив
+const data = readFileSync('../../data.json', 'utf-8');
 const products = JSON.parse(data);
-
-console.log(products); // Вывод массива в консоль
 
 
 
