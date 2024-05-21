@@ -21,7 +21,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId,
         }
-        fetch('https://colonochka.netlify.app/web-data', {
+        fetch('http://localhost:3000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
