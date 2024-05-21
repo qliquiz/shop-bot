@@ -2,29 +2,15 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
+const fs = require('fs');
 
-let products = require('../../db');
-// import { products } from '../../db';
 
-/* import sqlite3 from 'sqlite3';
-const db = new sqlite3.Database('../../../date_base_pluto.bd');
+const data = fs.readFileSync('../../data.json', 'utf-8');
 
-const [products, setData] = useState([]);
-const [error, setError] = useState(null);
+// Преобразование строки в массив
+const products = JSON.parse(data);
 
-useEffect(() => {
-    db.all('SELECT * FROM goods', (err, rows) => {
-        if (err) {
-        setError(err);
-        } else {
-        setData(rows);
-        }
-    });
-
-    return () => {
-        db.close();
-    };
-}, []); */
+console.log(products); // Вывод массива в консоль
 
 
 
