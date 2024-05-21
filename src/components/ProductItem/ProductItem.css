@@ -15,6 +15,7 @@
     grid-row-end: 2;
     border-radius: 10px;
     width: 100%;
+    max-width: 160px;
     /* background: lightgray; */
 }
 

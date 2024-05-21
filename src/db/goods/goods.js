@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dbPath = '/Users/artemgorev/date_base_pluto.bd';
+const dbPath = '/Users/artemgorev/data_base_pluto.bd';
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database(dbPath);
 
