@@ -14,5 +14,5 @@ db.close((err) => {
     // else console.log('\n' + 'Соединение с базой данных закрыто.' + '\n');
 });
 
-// module.exports = products;
-export default products;
+module.exports = products;
+// export default products;

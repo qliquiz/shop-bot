@@ -3,8 +3,8 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 
-// let products = require('../../../db');
-import { products } from '../../db';
+let products = require('../../db');
+// import { products } from '../../db';
 
 /* import sqlite3 from 'sqlite3';
 const db = new sqlite3.Database('../../../date_base_pluto.bd');
