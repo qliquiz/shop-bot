@@ -15,14 +15,15 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
-    function onSendData() {
-        const data = { message: 'Привет, сервер!' };
-
+    const onSendData = useCallback(() => {
+        const data = {
+            products: addedItems,
+            totalPrice: getTotalPrice(addedItems),
+            queryId,
+        }
         fetch('http://localhost:3000/url', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
         .then(response => {
@@ -39,7 +40,7 @@ const ProductList = () => {
             console.error('Ошибка:', error);
             alert('Произошла ошибка при отправке данных на сервер.');
         });
-    }
+    }, [addedItems]);
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
