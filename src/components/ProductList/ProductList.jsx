@@ -2,8 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import products from '../../data.json';
-
+import products from '../../db/goods/goods.json';
 
 
 const getTotalPrice = (items = []) => {
@@ -33,30 +32,24 @@ const ProductList = () => {
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData);
-        }
+        return () => tg.offEvent('mainButtonClicked', onSendData);
     }, [onSendData]);
 
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
-        if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id);
-        } else {
-            newItems = [...addedItems, product];
-        }
+        if (alreadyAdded) newItems = addedItems.filter(item => item.id !== product.id);
+        else newItems = [...addedItems, product];
 
         setAddedItems(newItems);
 
-        if(newItems.length === 0) {
-            tg.MainButton.hide();
-        } else {
+        if(newItems.length === 0) tg.MainButton.hide();
+        else {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `Купить ${getTotalPrice(newItems)}`
-            })
+            });
         }
     }
 

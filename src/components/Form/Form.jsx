@@ -1,25 +1,23 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css';
-import {useTelegram} from "../../hooks/useTelegram";
+import {useTelegram} from '../../hooks/useTelegram';
 
 const Form = () => {
-    const [country, setCountry] = useState('');
-    const [city, setCity] = useState('');
-    const [postOffice, setPostOffice] = useState('');
-    const [friendName, setFriendName] = useState('');
-    const [subject, setSubject] = useState('physical');
+    const [phone_number, setPhoneNumber] = useState('');
+    const [post_index, setPostIndex] = useState('');
+    const [friend_username, setFriendUsername] = useState('');
+    const [customer_type, setCustomerType] = useState('physical');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            city,
-            postOffice,
-            friendName,
-            subject
+            phone_number,
+            post_index,
+            friend_username,
+            customer_type
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, city, postOffice, friendName, subject])
+    }, [phone_number, post_index, friend_username, customer_type])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -35,65 +33,54 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!postOffice || !city || !country) {
+        if(!post_index || !phone_number) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, postOffice])
+    }, [phone_number, post_index])
 
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value)
+    const onChangePhoneNumber = (e) => {
+        setPhoneNumber(e.target.value)
     }
 
-    const onChangeCity = (e) => {
-        setCity(e.target.value)
+    const onChangePostIndex = (e) => {
+        setPostIndex(e.target.value)
     }
 
-    const onChangePostOffice = (e) => {
-        setPostOffice(e.target.value)
+    const onChangeFriendUsername = (e) => {
+        setFriendUsername(e.target.value)
     }
 
-    const onChangeFriendName = (e) => {
-        setFriendName(e.target.value)
-    }
-
-    const onChangeSubject = (e) => {
-        setSubject(e.target.value)
+    const onChangeCustomerType = (e) => {
+        setCustomerType(e.target.value)
     }
 
     return (
-        <div className={"form"}>
+        <div className={'form'}>
             <h3>Введите ваши данные</h3>
             <input
                 className={'input'}
-                type="text"
-                placeholder={'Страна*'}
-                value={country}
-                onChange={onChangeCountry}
+                type='text'
+                placeholder={'Номер телефона*'}
+                value={phone_number}
+                onChange={onChangePhoneNumber}
             />
             <input
                 className={'input'}
-                type="text"
-                placeholder={'Город*'}
-                value={city}
-                onChange={onChangeCity}
+                type='text'
+                placeholder={'Почтовый индекс*'}
+                value={post_index}
+                onChange={onChangePostIndex}
             />
             <input
                 className={'input'}
-                type="text"
-                placeholder={'Почтовое отделение*'}
-                value={postOffice}
-                onChange={onChangePostOffice}
+                type='text'
+                placeholder={'@tg_username пригласившего друга'}
+                value={friend_username}
+                onChange={onChangeFriendUsername}
             />
-            <input
-                className={'input'}
-                type="text"
-                placeholder={'Телеграм-логин пригласившего друга'}
-                value={friendName}
-                onChange={onChangeFriendName}
-            />
-            <select value={subject} onChange={onChangeSubject} className={'select'}>
+            <select value={customer_type} onChange={onChangeCustomerType} className={'select'}>
                 <option value={'physical'}>Физ. лицо</option>
                 <option value={'legal'}>Юр. лицо</option>
             </select>
