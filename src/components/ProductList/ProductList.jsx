@@ -15,18 +15,31 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
-    const onSendData = useCallback(() => {
-        const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
-            queryId,
-        }
-        fetch('http://localhost:8000/web-data', {
+    function onSendData() {
+        const data = { message: 'Привет, сервер!' };
+
+        fetch('http://localhost:3000/url', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
-    }, [addedItems]);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Ответ от сервера:', data);
+            alert('Данные успешно отправлены на сервер!');
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при отправке данных на сервер.');
+        });
+    }
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData);
