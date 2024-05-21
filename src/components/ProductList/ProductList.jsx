@@ -2,9 +2,9 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import { readFileSync } from 'fs';
+import fs from 'fs';
 
-const data = readFileSync('../../data.json', 'utf-8');
+const data = fs.readFileSync('../../data.json', 'utf-8');
 const products = JSON.parse(data);
 
 
