@@ -6,7 +6,7 @@ const Form = () => {
     const [phone_number, setPhoneNumber] = useState('');
     const [post_index, setPostIndex] = useState('');
     const [friend_username, setFriendUsername] = useState('');
-    const [customer_type, setCustomerType] = useState('physical');
+    const [customer_type, setCustomerType] = useState('Физ. лицо');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
@@ -81,8 +81,8 @@ const Form = () => {
                 onChange={onChangeFriendUsername}
             />
             <select value={customer_type} onChange={onChangeCustomerType} className={'select'}>
-                <option value={'physical'}>Физ. лицо</option>
-                <option value={'legal'}>Юр. лицо</option>
+                <option value={'Физ. лицо'}>Физ. лицо</option>
+                <option value={'Юр. лицо'}>Юр. лицо</option>
             </select>
         </div>
     );
